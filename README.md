@@ -1,6 +1,12 @@
 # react_basic
 
-(복습- 기본) 생활코딩 - react 2022 개정판
+(리엑트 기본) [생활코딩 - react 2022 개정판](https://www.youtube.com/watch?v=AoMv0SIjZL8&list=PLuHgQVnccGMCOGstdDZvH41x0Vtvwyxu7)
+
+<p>해당 강의를 들으면서 클론 코딩으로 결과물을 만들어 보고, </p>
+<p>혼자서 강의 결과물을 비슷하게 다시 구현해보기 !!😜 </p>
+<p>임의로 0~5 파트별로 나누어 git commit 진행</p>
+
+---
 
 ### 0. 리엑트 설치 및 수정
 
