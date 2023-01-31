@@ -19,3 +19,8 @@
 - Header
 - Nav
 - Article
+
+### 2. Read 구현
+
+- 클릭 시, Article 내용 바뀌게끔 구현
+- id가 바뀌면, Article 컴퍼넌트에서 Read 해서 화면에 뛰우기
