@@ -11,7 +11,7 @@ function Header(props) {
         props.onChangeMode("Read");
       }}
     >
-      <h2>WEB</h2>
+      <h2>{props.title}</h2>
     </a>
   );
 }
@@ -112,14 +112,16 @@ function App() {
   const [now_mode, set_mode] = useState("Read");
   const [now_id, set_id] = useState(0);
   const [topics, set_topics] = useState([
-    { id: 0, title: "web", desc: "web is ..." },
+    { id: 0, title: "Web", desc: "web is ..." },
     { id: 1, title: "html", desc: "html is ..." },
     { id: 2, title: "css", desc: "css is ..." },
     { id: 3, title: "js", desc: "js is ..." },
   ]);
+  console.log(topics);
   return (
     <div>
       <Header
+        title={topics[0].title}
         onChangeId={() => {
           set_id(0);
         }}
@@ -154,6 +156,15 @@ function App() {
         mode={now_mode}
         onChangeMode={(mode) => {
           set_mode(mode);
+          if (mode === "Delete") {
+            const tmp_topics = [];
+            for (let i = 0; i < topics.length; i++)
+              if (topics[i].id !== now_id) tmp_topics.push(topics[i]);
+            for (let i = 0; i < tmp_topics.length; i++) tmp_topics[i].id = i;
+            set_topics(tmp_topics);
+            set_id(0);
+            set_mode("Read");
+          }
         }}
       ></Mode>
     </div>

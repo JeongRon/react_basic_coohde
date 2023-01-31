@@ -42,3 +42,10 @@
       - submit 누를시
         - topics에 정보 push
         - Read mode로 다시 전환
+
+### 4. Delete 구현
+
+- Delete 버튼 누를 시
+  - Read -> Delete mode로 변환
+  - tmp_topics 리스트를 만들고, topics 리스트에서 Delete id 뺀 나머지 채워넣기
+  - id를 리스트의 인덱스 순서대로 다시 설정하기 (id 번호 재설정)
