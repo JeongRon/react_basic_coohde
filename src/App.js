@@ -36,6 +36,41 @@ function Nav(props) {
   }
   return <ol>{lst}</ol>;
 }
+function Update(props) {
+  const [title, setTitle] = useState(props.title);
+  const [desc, setDesc] = useState(props.desc);
+  return (
+    <form
+      onSubmit={(event) => {
+        event.preventDefault();
+        const update_title = event.target.title.value;
+        const update_body = event.target.body.value;
+        props.onResult(update_title, update_body);
+      }}
+    >
+      <p>
+        <input
+          type="text"
+          name="title"
+          placeholder="title"
+          value={title}
+          onChange={(event) => setTitle(event.target.value)}
+        />
+      </p>
+      <p>
+        <textarea
+          name="body"
+          placeholder="body"
+          value={desc}
+          onChange={(event) => setDesc(event.target.value)}
+        ></textarea>
+      </p>
+      <p>
+        <input type="submit" value="Update" />
+      </p>
+    </form>
+  );
+}
 function Article(props) {
   let content = null;
   if (props.mode === "Read") {
@@ -62,9 +97,19 @@ function Article(props) {
           <textarea name="body" placeholder="body"></textarea>
         </p>
         <p>
-          <input type="submit" name="create" />
+          <input type="submit" value="Create" />
         </p>
       </form>
+    );
+  } else if (props.mode === "Update") {
+    content = (
+      <Update
+        title={props.title}
+        desc={props.desc}
+        onResult={(_title, _desc) => {
+          props.onUpdate(_title, _desc);
+        }}
+      ></Update>
     );
   }
   return content;
@@ -117,7 +162,6 @@ function App() {
     { id: 2, title: "css", desc: "css is ..." },
     { id: 3, title: "js", desc: "js is ..." },
   ]);
-  console.log(topics);
   return (
     <div>
       <Header
@@ -138,6 +182,7 @@ function App() {
           set_mode(mode);
         }}
       ></Nav>
+
       <Article
         mode={now_mode}
         title={topics[now_id].title}
@@ -148,6 +193,13 @@ function App() {
           tmp_topics.push({ id: _id, title: _title, desc: _desc });
           set_topics(tmp_topics);
           set_id(_id);
+          set_mode("Read");
+        }}
+        onUpdate={(_title, _desc) => {
+          const tmp_topics = [...topics];
+          tmp_topics[now_id].title = _title;
+          tmp_topics[now_id].desc = _desc;
+          set_topics(tmp_topics);
           set_mode("Read");
         }}
       ></Article>

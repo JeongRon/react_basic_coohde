@@ -49,3 +49,13 @@
   - Read -> Delete mode로 변환
   - tmp_topics 리스트를 만들고, topics 리스트에서 Delete id 뺀 나머지 채워넣기
   - id를 리스트의 인덱스 순서대로 다시 설정하기 (id 번호 재설정)
+
+### 5. Update 구현
+
+- Upate 버튼 누를 시
+  - Read -> Update mode로 변환
+  - Article 컴퍼넌트 / Update mode 이면, Update 컴퍼넌트로 이동
+    - Update 컴퍼넌트
+      - form value에 state 인 {title}, {desc} 넣기
+      - form 값이 변경 시 마다 setState 변경 됨
+      - onSubmit 이벤트 발생 시, 최종 title, desc 값 넘기기
