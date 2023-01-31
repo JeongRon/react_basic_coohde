@@ -24,3 +24,21 @@
 
 - 클릭 시, Article 내용 바뀌게끔 구현
 - id가 바뀌면, Article 컴퍼넌트에서 Read 해서 화면에 뛰우기
+
+### 3. Create 구현
+
+- 새로운 topic Create
+
+- Mode 컴퍼넌트 추가
+
+  - mode === 'Read' 일 때,
+    - id=0 이면, **Create 버튼** 표시
+    - id!=0 이면, **Update, Delete 버튼** 표시
+
+- Create 버튼 누를 시
+  - Read -> Create mode로 변환
+    - Article 컴퍼넌트 / Read mode => title, desc 화면에 띄우기
+    - Article 컴퍼넌트 / Create mode => form 형태 화면 띄우기
+      - submit 누를시
+        - topics에 정보 push
+        - Read mode로 다시 전환
